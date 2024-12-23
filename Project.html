@@ -1,0 +1,489 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Online Learning Platform
+    </title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .course-image {
+            transition: transform 0.3s ease;
+        }
+
+        .course-image:hover {
+            transform: scale(1.1);
+        }
+
+        .about-section-image {
+            transition: transform 0.3s ease;
+        }
+
+        .about-section-image:hover {
+            transform: scale(1.1);
+        }
+
+        .testimonial-card {
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body class="font-roboto bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <a class="text-2xl font-bold text-blue-600" href="#">
+                OnlineLearning
+            </a>
+            <ul class="flex space-x-4">
+                <li>
+                    <a class="text-gray-700 hover:text-blue-600" href="#">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a class="text-gray-700 hover:text-blue-600" href="#courses-section">
+                        Courses
+                    </a>
+                </li>
+                <li>
+                    <a class="text-gray-700 hover:text-blue-600" href="#about-section">
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a class="text-gray-700 hover:text-blue-600" href="#testimonials-section">
+                        Testimonial
+                    </a>
+                </li>
+                <li>
+                    <a class="text-gray-700 hover:text-blue-600" href="#" id="sign-in-btn">
+                        Sign In
+                    </a>
+                </li>
+                <li>
+                    <a class="text-gray-700 hover:text-blue-600" href="#Contact Us">
+                        Contact Us
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="bg-blue-600 text-white py-20 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4">
+                Learn New Skills Online
+            </h1>
+            <p class="text-lg mb-8">
+                Join our community and start learning today!
+            </p>
+            <button class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:text-blue-600"
+                id="get-started-btn">
+                Get Started
+            </button>
+        </div>
+    </section>
+    <!-- Registration Form Modal -->
+    <div class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden"
+        id="registration-modal">
+        <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6 text-center">
+                Register
+            </h2>
+            <form>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="name">
+                        Name
+                    </label>
+                    <input class="w-full px-3 py-2 border rounded-lg" id="name" name="name" type="text" />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="email">
+                        Email
+                    </label>
+                    <input class="w-full px-3 py-2 border rounded-lg" id="email" name="email" type="email" />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="password">
+                        Password
+                    </label>
+                    <input class="w-full px-3 py-2 border rounded-lg" id="password" name="password" type="password" />
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2" for="confirm-password">
+                        Confirm Password
+                    </label>
+                    <input class="w-full px-3 py-2 border rounded-lg" id="confirm-password" name="confirm-password"
+                        type="password" />
+                </div>
+                <button class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold" type="submit">
+                    Register
+                </button>
+            </form>
+            <button class="mt-4 text-gray-500 hover:text-gray-700" id="close-modal-btn">
+                Close
+            </button>
+        </div>
+    </div>
+    <!-- Login Form Modal -->
+    <div class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden" id="login-modal">
+        <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6 text-center">
+                Sign In
+            </h2>
+            <form>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="login-email">
+                        Email
+                    </label>
+                    <input class="w-full px-3 py-2 border rounded-lg" id="login-email" name="login-email"
+                        type="email" />
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2" for="login-password">
+                        Password
+                    </label>
+                    <input class="w-full px-3 py-2 border rounded-lg" id="login-password" name="login-password"
+                        type="password" />
+                </div>
+                <button class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold" type="submit">
+                    Sign
+                    In
+                </button>
+            </form>
+            <button class="mt-4 text-gray-500 hover:text-gray-700" id="close-login-modal-btn">
+                Close
+            </button>
+        </div>
+    </div>
+    <!-- Courses Section -->
+    <section class="py-20" id="courses-section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">
+                <u>
+                    Popular Courses
+                </u>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course 1 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img alt="A detailed image of a web development course with code snippets and a computer screen"
+                        class="course-image" height="400"
+                        src="https://storage.googleapis.com/a1aa/image/RQGpFIOUMmpgBl1gs3PZyqPEz8YIRtpkVMbIoLhCajq9qDeJA.jpg"
+                        width="600" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">
+                            <a class="text-gray-700 hover:text-blue-600"
+                                href="https://www.geeksforgeeks.org/web-development/?ref=home-articlecards">
+                                Web
+                                Development
+                            </a>
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Learn how to build websites and web applications from scratch.
+                        </p>
+                        <a class="text-blue-600 font-semibold"
+                            href="https://www.geeksforgeeks.org/web-development/?ref=home-articlecards">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <!-- Course 2 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img alt="A detailed image of a data science course with charts and graphs on a computer screen"
+                        class="course-image" height="400"
+                        src="https://storage.googleapis.com/a1aa/image/WPRPXhke5BS1TK3tw4nrz1nieQlBd4LEGR0r01WJF0LxrO4TA.jpg"
+                        width="600" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">
+                            <a class="text-gray-700 hover:text-blue-600"
+                                href="https://www.geeksforgeeks.org/ai-ml-ds/?ref=home-articlecards">
+                                AI ML &amp; Data
+                                Science
+                            </a>
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Master data analysis, visualization, and machine learning
+                            techniques.
+                        </p>
+                        <a class="text-blue-600 font-semibold"
+                            href="https://www.geeksforgeeks.org/ai-ml-ds/?ref=home-articlecards">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <!-- Course 3 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img alt="A detailed image of a graphic design course with design software and creative artwork"
+                        class="course-image" height="400"
+                        src="https://storage.googleapis.com/a1aa/image/fP5fUMzWePPtfTnDkvovKSQWHSLQWQxI9cFsjpwa3zaWv6gPB.jpg"
+                        width="600" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">
+                            <a class="text-gray-700 hover:text-blue-600"
+                                href="https://www.geeksforgeeks.org/system-design-tutorial/?ref=home-articlecards">
+                                System
+                                Design
+                            </a>
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Explore the fundamentals of system design and visual
+                            communication.
+                        </p>
+                        <a class="text-blue-600 font-semibold"
+                            href="https://www.geeksforgeeks.org/system-design-tutorial/?ref=home-articlecards">
+                            Learn
+                            More
+                        </a>
+                    </div>
+                </div>
+                <!-- Course 4 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img alt="A detailed image of a digital marketing course with marketing analytics and social media icons"
+                        class="course-image" height="400"
+                        src="https://storage.googleapis.com/a1aa/image/P3Q19YV2KRJTH5vd69PdxF5QRd3r7Zewhenp4dU4lRrSKi4TA.jpg"
+                        width="600" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">
+                            <a class="text-gray-700 hover:text-blue-600"
+                                href="https://www.geeksforgeeks.org/what-is-digital-marketing/">
+                                Digital Marketing
+                            </a>
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Learn the strategies and tools for effective digital marketing.
+                        </p>
+                        <a class="text-blue-600 font-semibold"
+                            href="https://www.geeksforgeeks.org/what-is-digital-marketing/">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <!-- Course 5 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img alt="A detailed image of a cybersecurity course with a lock and computer screen showing security protocols"
+                        class="course-image" height="400"
+                        src="https://storage.googleapis.com/a1aa/image/bXlnrx7wPlK1IJizxsHwrSO3w77QNNeiTToAk616bEhKFR8JA.jpg"
+                        width="600" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">
+                            <a class="text-gray-700 hover:text-blue-600"
+                                href="https://www.geeksforgeeks.org/cyber-security-types-and-importance/">
+                                Cybersecurity
+                            </a>
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Understand the principles and practices of cybersecurity.
+                        </p>
+                        <a class="text-blue-600 font-semibold"
+                            href="https://www.geeksforgeeks.org/cyber-security-types-and-importance/">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <!-- Course 6 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img alt="A detailed image of a cloud computing course with cloud icons and a computer screen"
+                        class="course-image" height="400"
+                        src="https://storage.googleapis.com/a1aa/image/hoUHF5tWlWLbFVc63d9Ufe92rw8eWzd5mWPyrWEewd6NpIiPB.jpg"
+                        width="600" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">
+                            <a class="text-gray-700 hover:text-blue-600"
+                                href="https://www.geeksforgeeks.org/cloud-computing/">
+                                Cloud Computing
+                            </a>
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Dive into the world of cloud services and infrastructure.
+                        </p>
+                        <a class="text-blue-600 font-semibold" href="https://www.geeksforgeeks.org/cloud-computing/">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Us Section -->
+    <section class="bg-blue-200 py-20" id="about-section">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <img alt="A detailed image representing online learning with a laptop, books, and educational icons"
+                    class="about-section-image" height="200" src="\ab2-removebg-preview.png" width="300" />
+            </div>
+            <div class="md:w-1/2 md:pl-8">
+                <h2 class="text-3xl font-bold text-center mb-12">
+                    About Us
+                </h2>
+                <div class="text-center max-w-2xl mx-auto">
+                    <p class="text-gray-700 mb-4">
+                        Welcome to OnlineLearning, your number one source for all things related to online education.
+                        We're dedicated to giving you the very best of online courses, with a focus on quality,
+                        accessibility, and affordability.
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        Founded in 2024, OnlineLearning has come a long way from its beginnings. When we first started
+                        out, our passion for making education accessible to everyone drove us to start this platform so
+                        that OnlineLearning can offer you the world's best online courses. We now serve students all
+                        over the world and are thrilled that we're able to turn our passion into our own website.
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        We hope you enjoy our courses as much as we enjoy offering them to you. If you have any
+                        questions or comments, please don't hesitate to contact us.
+                    </p>
+                    <p class="text-gray-700 font-bold">
+                        Sincerely,
+                        <br />
+                        The OnlineLearning Team
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section class="bg-gray-200 py-20" id="testimonials-section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">
+                What Our Students Say
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white shadow-md rounded-lg p-6 testimonial-card">
+                    <img alt="A detailed image of a smiling student with a background of bookshelves"
+                        class="w-16 h-16 rounded-full mx-auto mb-4" height="100"
+                        src="https://storage.googleapis.com/a1aa/image/ijs23drIrlI7ORyxFIN8idt7ex0HwqMuLO633Rteefhfd1BfE.jpg"
+                        width="100" />
+                    <p class="text-gray-700 mb-4">
+                        "This platform has transformed my career. The courses are well-structured and the instructors
+                        are top-notch."
+                    </p>
+                    <h3 class="text-xl font-bold">
+                        John Doe
+                    </h3>
+                    <p class="text-gray-500">
+                        Web Developer
+                    </p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-white shadow-md rounded-lg p-6 testimonial-card">
+                    <img alt="A detailed image of a happy student with a background of a classroom"
+                        class="w-16 h-16 rounded-full mx-auto mb-4" height="100"
+                        src="https://storage.googleapis.com/a1aa/image/Lrfndl4y5X3TJqN7VuSzU6otSPb9ZvtLVNiQe0WpWrJwrO4TA.jpg"
+                        width="100" />
+                    <p class="text-gray-700 mb-4">
+                        "I have learned so much from the data science courses. The hands-on projects are incredibly
+                        valuable."
+                    </p>
+                    <h3 class="text-xl font-bold">
+                        Jane Smith
+                    </h3>
+                    <p class="text-gray-500">
+                        Data Analyst
+                    </p>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-white shadow-md rounded-lg p-6 testimonial-card">
+                    <img alt="A detailed image of a satisfied student with a background of a design studio"
+                        class="w-16 h-16 rounded-full mx-auto mb-4" height="100"
+                        src="https://storage.googleapis.com/a1aa/image/RfIxXVe8VppiAEoOALuuuP6AYSDhJB1PdduxiKLiMfVmXdwnA.jpg"
+                        width="100" />
+                    <p class="text-gray-700 mb-4">
+                        "The graphic design course helped me land my dream job. The content is engaging and practical."
+                    </p>
+                    <h3 class="text-xl font-bold">
+                        Emily Johnson
+                    </h3>
+                    <p class="text-gray-500">
+                        Graphic Designer
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="py-20 bg-gray-100" id="Contact Us">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8">
+                Contact Us
+            </h2>
+            <p class="text-lg mb-8">
+                Have any questions or want to get started? Reach out to us!
+            </p>
+            <form class="max-w-lg mx-auto">
+                <div class="mb-4">
+                    <input class="w-full p-3 rounded-lg border border-gray-300" placeholder="Your Name" type="text" />
+                </div>
+                <div class="mb-4">
+                    <input class="w-full p-3 rounded-lg border border-gray-300" placeholder="Your Email" type="email" />
+                </div>
+                <div class="mb-4">
+                    <textarea class="w-full p-3 rounded-lg border border-gray-300"
+                        placeholder="Your Message"></textarea>
+                </div>
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>
+                © 2024 LearnOnline. All rights reserved.
+            </p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a class="text-gray-400 hover:text-white" href="https://www.facebook.com/">
+                    <i class="fab fa-facebook-f">
+                    </i>
+                </a>
+                <a class="text-gray-400 hover:text-white" href="https://x.com/?lang=en-in">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a class="text-gray-400 hover:text-white" href="https://www.linkedin.com/">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a class="text-gray-400 hover:text-white" href="https://www.instagram.com/">
+                    <i class="fab fa-instagram">
+                    </i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('get-started-btn').addEventListener('click', function () {
+            document.getElementById('registration-modal').classList.remove('hidden');
+        });
+
+        document.getElementById('close-modal-btn').addEventListener('click', function () {
+            document.getElementById('registration-modal').classList.add('hidden');
+        });
+
+        document.getElementById('sign-in-btn').addEventListener('click', function () {
+            document.getElementById('login-modal').classList.remove('hidden');
+        });
+
+        document.getElementById('close-login-modal-btn').addEventListener('click', function () {
+            document.getElementById('login-modal').classList.add('hidden');
+        });
+    </script>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2024/12/08/10/20241208103506-2ZHXW0ID.js"></script>
+</body>
+
+</html>
